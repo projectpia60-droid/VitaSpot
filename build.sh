@@ -51,7 +51,7 @@ cmake .. \
 # Build
 echo ""
 echo "🔨 Compiling VitaSpot..."
-NPROCS=$(sysctl -n hw.ncpu)
+NPROCS=$(nproc 2>/dev/null || sysctl -n hw.ncpu 2>/dev/null || echo 1)
 make -j$NPROCS
 
 # Check output
