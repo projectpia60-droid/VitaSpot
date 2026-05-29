@@ -122,17 +122,7 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fno-builtin-printf")
 vita_create_self(${PROJECT_NAME}.self ${PROJECT_NAME})
 
 # ============================================================================
-# Create SFO (System File Object)
-# ============================================================================
-
-vita_create_sfo(param.sfo
-    "${VITA_APP_NAME}"
-    TITLE_ID "${VITA_TITLEID}"
-    VERSION "${VITA_VERSION}"
-)
-
-# ============================================================================
-# Create VPK (Package)
+# Create VPK (Package) - includes SFO automatically
 # ============================================================================
 
 vita_create_vpk(${PROJECT_NAME}.vpk ${VITA_TITLEID} ${PROJECT_NAME}.self
