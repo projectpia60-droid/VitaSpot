@@ -159,7 +159,7 @@ SceUID cache_agent_start(void) {
     }
 
     SceUID thread = sceKernelCreateThread("cache_agent", cache_agent_thread,
-                                           0x10000100, 4096, 0, 0, NULL);
+                                           100, 16 * 1024, 0, 0, NULL);
 
     if (thread < 0) {
         log_error("[CacheAgent] Failed to create thread");

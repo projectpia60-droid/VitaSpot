@@ -23,8 +23,10 @@ int logger_init(const char *log_file, LogLevel level) {
         return -1;
     }
 
-    // Intentar crear el directorio de logs si no existe
-    // (En PSVita, el directorio generalmente ya existe)
+    // Crear directorio de data si no existe
+    sceIoMkdir("ux0:data", 0777);
+    sceIoMkdir("ux0:data/vitaspot", 0777);
+    sceIoMkdir("ux0:data/vitaspot/art", 0777);
 
     // Abrir archivo de log en modo append, crear si no existe
     g_log_fd = sceIoOpen(log_file, SCE_O_WRONLY | SCE_O_CREAT | SCE_O_APPEND, 0644);

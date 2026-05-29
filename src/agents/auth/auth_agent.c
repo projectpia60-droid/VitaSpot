@@ -190,8 +190,8 @@ int auth_agent_thread(SceSize args, void *argp) {
 SceUID auth_agent_start(void) {
     g_agent_running = 1;
 
-    SceUID thread = sceKernelCreateThread("auth_agent", auth_agent_thread, 0x10000100,
-                                           4096, 0, 0, NULL);
+    SceUID thread = sceKernelCreateThread("auth_agent", auth_agent_thread, 100,
+                                           16 * 1024, 0, 0, NULL);
 
     if (thread < 0) {
         log_error("[AuthAgent] Failed to create thread");

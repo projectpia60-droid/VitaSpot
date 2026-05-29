@@ -128,8 +128,8 @@ SceUID api_agent_start(void) {
     g_agent_running = 1;
     g_authenticated = 0;
 
-    SceUID thread = sceKernelCreateThread("api_agent", api_agent_thread, 0x10000100,
-                                           4096, 0, 0, NULL);
+    SceUID thread = sceKernelCreateThread("api_agent", api_agent_thread, 100,
+                                           16 * 1024, 0, 0, NULL);
 
     if (thread < 0) {
         log_error("[APIAgent] Failed to create thread");

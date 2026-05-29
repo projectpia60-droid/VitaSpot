@@ -2,8 +2,10 @@
 #include <psp2/kernel/processmgr.h>
 #include <psp2/kernel/sysmem.h>
 #include <psp2/kernel/threadmgr.h>
+#include <psp2/kernel/sysclibrary.h>
 #include <psp2/ctrl.h>
 #include <psp2/power.h>
+#include <psp2/sysmodule.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -63,6 +65,9 @@ static void init_power_management(void) {
 // ============================================================================
 
 static int init_system(void) {
+    // Cargar módulos de SceKernel requeridos
+    sceSysmoduleLoadModule(SCE_SYSMODULE_NET);
+    
     // Inicializar logger
     if (logger_init("ux0:data/vitaspot/vitaspot.log", LOG_INFO) != 0) {
         printf("FATAL: Failed to initialize logger\n");

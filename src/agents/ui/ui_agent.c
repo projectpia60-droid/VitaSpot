@@ -217,8 +217,8 @@ int ui_agent_thread(SceSize args, void *argp) {
 SceUID ui_agent_start(void) {
     g_agent_running = 1;
 
-    SceUID thread = sceKernelCreateThread("ui_agent", ui_agent_thread, 0x10000100,
-                                           8192, 0, 0, NULL);
+    SceUID thread = sceKernelCreateThread("ui_agent", ui_agent_thread, 100,
+                                           32 * 1024, 0, 0, NULL);
 
     if (thread < 0) {
         log_error("[UIAgent] Failed to create thread");
